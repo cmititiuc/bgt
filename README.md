@@ -43,8 +43,7 @@ $ iex -S mix phoenix.server
 ```elixir
 > params = %{username: "test", password: "test1234", email: "test@example.com"}
 > alias OpenmaizePhoenixBoilerplate.{User, Repo}
-> changeset = User.auth_changeset(%User{}, params)
-> Repo.insert(changeset)
+> Repo.insert(User.auth_changeset(%User{}, params))
 ```
 
 ## Learn more
