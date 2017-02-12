@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Bgt - minimal budget tracker</title>
+    <title>bgt - minimal budget tracker</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -41,7 +41,7 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
       <main role="main">
-      <%= render @view_module, @view_template, assigns %>
+        <%= render @view_module, @view_template, assigns %>
       </main>
 
     </div> <!-- /container -->
