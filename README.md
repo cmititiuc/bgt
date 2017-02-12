@@ -38,6 +38,15 @@ $ npm install
 $ iex -S mix phoenix.server
 ```
 
+## Adding a new user from the console
+
+```elixir
+params = %{username: "test", password: "test1234", email: "test@example.com"}
+alias OpenmaizePhoenixBoilerplate.User
+changeset = User.auth_changeset(%User{}, params)
+OpenmaizePhoenixBoilerplate.Repo.insert(changeset)
+```
+
 ## Learn more
 
   * Official website: http://www.phoenixframework.org/
