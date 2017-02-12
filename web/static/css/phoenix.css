@@ -80,3 +80,20 @@ form.link, form.button {
     border-bottom: 0;
   }
 }
+
+/* Fixes Log Out link styles */
+
+.nav-pills > li > form > a {
+  border-radius: 4px;
+}
+
+.nav > li > form > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.nav > li > form > a:focus, .nav > li > form > a:hover {
+  text-decoration: none;
+  background-color: #eee;
+}
