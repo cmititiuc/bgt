@@ -25,9 +25,7 @@ $ mix openmaize.phx
 defp deps do
   [{:openmaize, "~> 2.8"}]
 end
-```
-
-```elixir
+...
 def application do
   [applications: [:logger, :openmaize]]
 end
