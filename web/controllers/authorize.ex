@@ -1,8 +1,8 @@
-defmodule OpenmaizePhoenixBoilerplate.Authorize do
+defmodule Bgt.Authorize do
 
   import Plug.Conn
   import Phoenix.Controller
-  import OpenmaizePhoenixBoilerplate.Router.Helpers
+  import Bgt.Router.Helpers
 
   def auth_action(%Plug.Conn{assigns: %{current_user: nil}} = conn, _) do
     auth_error conn, "You need to log in to view this page", session_path(conn, :new)

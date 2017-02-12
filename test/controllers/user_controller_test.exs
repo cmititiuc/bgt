@@ -1,14 +1,14 @@
-defmodule OpenmaizePhoenixBoilerplate.UserControllerTest do
-  use OpenmaizePhoenixBoilerplate.ConnCase
+defmodule Bgt.UserControllerTest do
+  use Bgt.ConnCase
 
-  import OpenmaizePhoenixBoilerplate.TestHelpers
-  alias OpenmaizePhoenixBoilerplate.{Repo, User}
+  import Bgt.TestHelpers
+  alias Bgt.{Repo, User}
 
   @valid_attrs %{username: "bill", email: "bill@mail.com", password: "^hEsdg*F899"}
   @invalid_attrs %{email: "", password: ""}
 
   setup %{conn: conn} = config do
-    conn = conn |> bypass_through(OpenmaizePhoenixBoilerplate.Router, :browser) |> get("/")
+    conn = conn |> bypass_through(Bgt.Router, :browser) |> get("/")
 
     if username = config[:login] do
       user = add_user(username)

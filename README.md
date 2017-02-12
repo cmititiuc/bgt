@@ -1,4 +1,4 @@
-# OpenmaizePhoenixBoilerplate
+# Bgt
 
 To start your Phoenix app:
 
@@ -14,8 +14,8 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 ## Command History
 
 ```bash
-$ mix phoenix.new openmaize_phoenix_boilerplate
-$ cd openmaize_phoenix_boilerplate/
+$ mix phoenix.new bgt
+$ cd bgt/
 $ mix archive.install https://github.com/riverrun/openmaize/raw/master/installer/archives/openmaize_phx-2.8.0.ez
 $ mix openmaize.phx
 ```
@@ -32,8 +32,7 @@ end
 ```
 
 ```bash
-$ mix deps.get
-$ mix ecto.setup
+$ mix do deps.get, ecto.setup
 $ npm install
 $ iex -S mix phoenix.server
 ```
@@ -42,7 +41,7 @@ $ iex -S mix phoenix.server
 
 ```elixir
 > params = %{username: "test", password: "test1234", email: "test@example.com"}
-> alias OpenmaizePhoenixBoilerplate.{User, Repo}
+> alias Bgt.{User, Repo}
 > %User{} |> User.auth_changeset(params) |> Repo.insert
 ```
 

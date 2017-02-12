@@ -1,21 +1,21 @@
-defmodule OpenmaizePhoenixBoilerplate.ErrorViewTest do
-  use OpenmaizePhoenixBoilerplate.ConnCase, async: true
+defmodule Bgt.ErrorViewTest do
+  use Bgt.ConnCase, async: true
 
   # Bring render/3 and render_to_string/3 for testing custom views
   import Phoenix.View
 
   test "renders 404.html" do
-    assert render_to_string(OpenmaizePhoenixBoilerplate.ErrorView, "404.html", []) ==
+    assert render_to_string(Bgt.ErrorView, "404.html", []) ==
            "Page not found"
   end
 
   test "render 500.html" do
-    assert render_to_string(OpenmaizePhoenixBoilerplate.ErrorView, "500.html", []) ==
+    assert render_to_string(Bgt.ErrorView, "500.html", []) ==
            "Internal server error"
   end
 
   test "render any other" do
-    assert render_to_string(OpenmaizePhoenixBoilerplate.ErrorView, "505.html", []) ==
+    assert render_to_string(Bgt.ErrorView, "505.html", []) ==
            "Internal server error"
   end
 end

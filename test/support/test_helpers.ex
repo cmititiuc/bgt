@@ -1,6 +1,6 @@
-defmodule OpenmaizePhoenixBoilerplate.TestHelpers do
+defmodule Bgt.TestHelpers do
 
-  alias OpenmaizePhoenixBoilerplate.{Repo, User}
+  alias Bgt.{Repo, User}
 
   def add_user(username) do
     user = %{username: username, email: "#{username}@mail.com",

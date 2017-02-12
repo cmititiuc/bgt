@@ -1,5 +1,5 @@
-defmodule OpenmaizePhoenixBoilerplate.Router do
-  use OpenmaizePhoenixBoilerplate.Web, :router
+defmodule Bgt.Router do
+  use Bgt.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -10,7 +10,7 @@ defmodule OpenmaizePhoenixBoilerplate.Router do
     plug Openmaize.Authenticate
   end
 
-  scope "/", OpenmaizePhoenixBoilerplate do
+  scope "/", Bgt do
     pipe_through :browser
 
     get "/", PageController, :index

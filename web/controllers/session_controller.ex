@@ -1,7 +1,7 @@
-defmodule OpenmaizePhoenixBoilerplate.SessionController do
-  use OpenmaizePhoenixBoilerplate.Web, :controller
+defmodule Bgt.SessionController do
+  use Bgt.Web, :controller
 
-  import OpenmaizePhoenixBoilerplate.Authorize
+  import Bgt.Authorize
   plug Openmaize.Login when action in [:create]
 
   def new(conn, _params) do

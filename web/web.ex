@@ -1,12 +1,12 @@
-defmodule OpenmaizePhoenixBoilerplate.Web do
+defmodule Bgt.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use OpenmaizePhoenixBoilerplate.Web, :controller
-      use OpenmaizePhoenixBoilerplate.Web, :view
+      use Bgt.Web, :controller
+      use Bgt.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -30,12 +30,12 @@ defmodule OpenmaizePhoenixBoilerplate.Web do
     quote do
       use Phoenix.Controller
 
-      alias OpenmaizePhoenixBoilerplate.Repo
+      alias Bgt.Repo
       import Ecto
       import Ecto.Query
 
-      import OpenmaizePhoenixBoilerplate.Router.Helpers
-      import OpenmaizePhoenixBoilerplate.Gettext
+      import Bgt.Router.Helpers
+      import Bgt.Gettext
     end
   end
 
@@ -49,9 +49,9 @@ defmodule OpenmaizePhoenixBoilerplate.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import OpenmaizePhoenixBoilerplate.Router.Helpers
-      import OpenmaizePhoenixBoilerplate.ErrorHelpers
-      import OpenmaizePhoenixBoilerplate.Gettext
+      import Bgt.Router.Helpers
+      import Bgt.ErrorHelpers
+      import Bgt.Gettext
     end
   end
 
@@ -65,10 +65,10 @@ defmodule OpenmaizePhoenixBoilerplate.Web do
     quote do
       use Phoenix.Channel
 
-      alias OpenmaizePhoenixBoilerplate.Repo
+      alias Bgt.Repo
       import Ecto
       import Ecto.Query
-      import OpenmaizePhoenixBoilerplate.Gettext
+      import Bgt.Gettext
     end
   end
 

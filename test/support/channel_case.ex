@@ -1,4 +1,4 @@
-defmodule OpenmaizePhoenixBoilerplate.ChannelCase do
+defmodule Bgt.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule OpenmaizePhoenixBoilerplate.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias OpenmaizePhoenixBoilerplate.Repo
+      alias Bgt.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint OpenmaizePhoenixBoilerplate.Endpoint
+      @endpoint Bgt.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(OpenmaizePhoenixBoilerplate.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Bgt.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(OpenmaizePhoenixBoilerplate.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Bgt.Repo, {:shared, self()})
     end
 
     :ok

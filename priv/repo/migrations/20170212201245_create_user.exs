@@ -1,4 +1,4 @@
-defmodule OpenmaizePhoenixBoilerplate.Repo.Migrations.CreateUser do
+defmodule Bgt.Repo.Migrations.CreateUser do
   use Ecto.Migration
 
   def change do

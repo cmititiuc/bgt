@@ -1,4 +1,4 @@
-defmodule OpenmaizePhoenixBoilerplate.ConnCase do
+defmodule Bgt.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,23 +20,23 @@ defmodule OpenmaizePhoenixBoilerplate.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias OpenmaizePhoenixBoilerplate.Repo
+      alias Bgt.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      import OpenmaizePhoenixBoilerplate.Router.Helpers
+      import Bgt.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint OpenmaizePhoenixBoilerplate.Endpoint
+      @endpoint Bgt.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(OpenmaizePhoenixBoilerplate.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Bgt.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(OpenmaizePhoenixBoilerplate.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Bgt.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

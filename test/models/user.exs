@@ -1,7 +1,7 @@
-defmodule OpenmaizePhoenixBoilerplate.UserTest do
-  use OpenmaizePhoenixBoilerplate.ModelCase
+defmodule Bgt.UserTest do
+  use Bgt.ModelCase
 
-  alias OpenmaizePhoenixBoilerplate.User
+  alias Bgt.User
 
   @valid_attrs %{username: "fred", email: "fred@mail.com", password: "mangoes&gooseberries"}
   @invalid_attrs %{email: "fred@mail.com", password: "mangoes&gooseberries"}

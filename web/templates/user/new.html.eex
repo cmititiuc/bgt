@@ -8,7 +8,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :username, "username", class: "control-label" %>
+    <%= label f, :username, "Username", class: "control-label" %>
     <%= text_input f, :username, class: "form-control" %>
     <%= error_tag f, :username %>
   </div>

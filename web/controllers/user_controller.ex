@@ -1,8 +1,8 @@
-defmodule OpenmaizePhoenixBoilerplate.UserController do
-  use OpenmaizePhoenixBoilerplate.Web, :controller
+defmodule Bgt.UserController do
+  use Bgt.Web, :controller
 
-  import OpenmaizePhoenixBoilerplate.Authorize
-  alias OpenmaizePhoenixBoilerplate.User
+  import Bgt.Authorize
+  alias Bgt.User
 
   plug :user_check when action in [:index, :show]
   plug :id_check when action in [:edit, :update, :delete]

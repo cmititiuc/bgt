@@ -1,4 +1,4 @@
-defmodule OpenmaizePhoenixBoilerplate do
+defmodule Bgt do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -9,23 +9,23 @@ defmodule OpenmaizePhoenixBoilerplate do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(OpenmaizePhoenixBoilerplate.Repo, []),
+      supervisor(Bgt.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(OpenmaizePhoenixBoilerplate.Endpoint, []),
-      # Start your own worker by calling: OpenmaizePhoenixBoilerplate.Worker.start_link(arg1, arg2, arg3)
-      # worker(OpenmaizePhoenixBoilerplate.Worker, [arg1, arg2, arg3]),
+      supervisor(Bgt.Endpoint, []),
+      # Start your own worker by calling: Bgt.Worker.start_link(arg1, arg2, arg3)
+      # worker(Bgt.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: OpenmaizePhoenixBoilerplate.Supervisor]
+    opts = [strategy: :one_for_one, name: Bgt.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    OpenmaizePhoenixBoilerplate.Endpoint.config_change(changed, removed)
+    Bgt.Endpoint.config_change(changed, removed)
     :ok
   end
 end

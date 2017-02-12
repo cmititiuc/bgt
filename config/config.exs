@@ -6,15 +6,15 @@
 use Mix.Config
 
 # General application configuration
-config :openmaize_phoenix_boilerplate,
-  ecto_repos: [OpenmaizePhoenixBoilerplate.Repo]
+config :bgt,
+  ecto_repos: [Bgt.Repo]
 
 # Configures the endpoint
-config :openmaize_phoenix_boilerplate, OpenmaizePhoenixBoilerplate.Endpoint,
+config :bgt, Bgt.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "uTUhsPQTvhLUF8G2KkMh6Ge1paEIZCXSAP8YEBntFL5Wc5KRDTZZd3SXVUw8LtMl",
-  render_errors: [view: OpenmaizePhoenixBoilerplate.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: OpenmaizePhoenixBoilerplate.PubSub,
+  render_errors: [view: Bgt.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Bgt.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

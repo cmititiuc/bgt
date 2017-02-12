@@ -1,5 +1,5 @@
-defmodule OpenmaizePhoenixBoilerplate.User do
-  use OpenmaizePhoenixBoilerplate.Web, :model
+defmodule Bgt.User do
+  use Bgt.Web, :model
 
   alias Openmaize.Database, as: DB
 

@@ -1,3 +1,3 @@
-defmodule OpenmaizePhoenixBoilerplate.UserView do
-  use OpenmaizePhoenixBoilerplate.Web, :view
+defmodule Bgt.UserView do
+  use Bgt.Web, :view
 end

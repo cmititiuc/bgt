@@ -1,3 +1,3 @@
-defmodule OpenmaizePhoenixBoilerplate.LayoutViewTest do
-  use OpenmaizePhoenixBoilerplate.ConnCase, async: true
+defmodule Bgt.LayoutViewTest do
+  use Bgt.ConnCase, async: true
 end

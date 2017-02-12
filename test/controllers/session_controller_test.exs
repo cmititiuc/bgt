@@ -1,13 +1,13 @@
-defmodule OpenmaizePhoenixBoilerplate.SessionControllerTest do
-  use OpenmaizePhoenixBoilerplate.ConnCase
+defmodule Bgt.SessionControllerTest do
+  use Bgt.ConnCase
 
-  import OpenmaizePhoenixBoilerplate.TestHelpers
+  import Bgt.TestHelpers
 
   @valid_attrs %{username: "robin", password: "mangoes&g0oseberries"}
   @invalid_attrs %{username: "robin", password: "maaaangoes&g00zeberries"}
 
   setup %{conn: conn} do
-    conn = conn |> bypass_through(OpenmaizePhoenixBoilerplate.Router, :browser) |> get("/")
+    conn = conn |> bypass_through(Bgt.Router, :browser) |> get("/")
     user = add_user("robin")
 
     {:ok, %{conn: conn, user: user}}

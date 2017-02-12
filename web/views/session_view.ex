@@ -1,3 +1,3 @@
-defmodule OpenmaizePhoenixBoilerplate.SessionView do
-  use OpenmaizePhoenixBoilerplate.Web, :view
+defmodule Bgt.SessionView do
+  use Bgt.Web, :view
 end
