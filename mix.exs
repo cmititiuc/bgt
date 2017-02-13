@@ -19,7 +19,7 @@ defmodule Bgt.Mixfile do
   def application do
     [mod: {Bgt, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :openmaize]]
+                    :phoenix_ecto, :postgrex, :openmaize, :timex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +38,8 @@ defmodule Bgt.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:openmaize, "~> 2.8"}
+      {:openmaize, "~> 2.8"},
+      {:timex, "~> 3.0"}
     ]
   end
 

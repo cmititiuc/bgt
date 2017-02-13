@@ -3,7 +3,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Date</th>
+      <th>DateTime</th>
       <th>Amount</th>
       <th>Description</th>
 
@@ -13,7 +13,13 @@
   <tbody>
 <%= for transaction <- @transactions do %>
     <tr>
-      <td><%= transaction.inserted_at %></td>
+      <td>
+        <%= transaction.inserted_at
+          |> Ecto.DateTime.cast!
+          |> Ecto.DateTime.to_erl
+          |> Timex.format!("{WDshort}, {Mshort} {D}, {YYYY} - {h12}:{m} {AM}")
+        %>
+      </td>
       <td><%= transaction.amount %></td>
       <td><%= transaction.description %></td>
 
