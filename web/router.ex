@@ -16,5 +16,6 @@ defmodule Bgt.Router do
     get "/", PageController, :index
 
     resources "/sessions", SessionController, only: [:new, :create, :delete]
+    resources "/transactions", TransactionController
   end
 end
