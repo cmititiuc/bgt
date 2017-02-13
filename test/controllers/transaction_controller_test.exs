@@ -2,8 +2,20 @@ defmodule Bgt.TransactionControllerTest do
   use Bgt.ConnCase
 
   alias Bgt.Transaction
+  import Bgt.TestHelpers
+
+
+  @valid_user_attrs %{username: "robin", password: "mangoes&g0oseberries"}
+  @invalid_user_attrs %{username: "robin", password: "maaaangoes&g00zeberries"}
   @valid_attrs %{amount: "120.5", description: "some content"}
   @invalid_attrs %{}
+
+  setup %{conn: conn} do
+    conn = conn |> bypass_through(Bgt.Router, :browser) |> get("/")
+    user = add_user("robin")
+
+    {:ok, %{conn: conn, user: user}}
+  end
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, transaction_path(conn, :index)
@@ -38,8 +50,9 @@ defmodule Bgt.TransactionControllerTest do
     end
   end
 
-  test "renders form for editing chosen resource", %{conn: conn} do
-    transaction = Repo.insert! %Transaction{}
+  test "renders form for editing chosen resource", %{conn: conn, user: user} do
+    transaction = Repo.insert! %Transaction{user_id: user.id}
+    conn = post conn, session_path(conn, :create), session: @valid_user_attrs
     conn = get conn, transaction_path(conn, :edit, transaction)
     assert html_response(conn, 200) =~ "Edit transaction"
   end
