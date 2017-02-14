@@ -3,14 +3,14 @@ use Mix.Config
 # In this file, we keep production configuration that
 # you likely want to automate and keep it away from
 # your version control system.
-
-# You can generate a new secret by running:
 #
-#     mix phoenix.gen.secret
-config :foo, Foo.Endpoint,
+# You should document the content of this
+# file or create a script for recreating it, since it's
+# kept out of version control and might be hard to recover
+# or recreate for your teammates (or you later on).
+config :bgt, Bgt.Endpoint,
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
-# Configure your database
-config :chat, Chat.Repo,
+config :bgt, Bgt.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL")
