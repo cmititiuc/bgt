@@ -13,4 +13,5 @@ config :bgt, Bgt.Endpoint,
 
 config :bgt, Bgt.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: System.get_env("DATABASE_URL")
+  url: System.get_env("DATABASE_URL"),
+  pool_size: 20
