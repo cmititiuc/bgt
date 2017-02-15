@@ -14,9 +14,9 @@
 <%= for transaction <- @transactions do %>
   <tr>
     <td>
-      <%= transaction.inserted_at
-        |> Ecto.DateTime.cast!
-        |> Ecto.DateTime.to_erl
+      <%=
+        timezone = Timex.Timezone.get("America/New_York", Timex.now)
+        Timex.Timezone.convert(transaction.inserted_at, timezone)
         |> Timex.format!("{WDshort}, {Mshort} {D}, {YYYY} - {h12}:{m} {AM}")
       %>
     </td>
