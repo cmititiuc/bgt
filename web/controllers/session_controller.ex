@@ -13,7 +13,7 @@ defmodule Bgt.SessionController do
   end
   def create(%Plug.Conn{private: %{openmaize_user: %{id: id}}} = conn, _params) do
     put_session(conn, :user_id, id)
-    |> auth_info("You have been logged in", page_path(conn, :index))
+    |> auth_info("You have been logged in", transaction_path(conn, :index))
   end
 
   def delete(conn, _params) do

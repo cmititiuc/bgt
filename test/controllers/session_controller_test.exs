@@ -15,7 +15,7 @@ defmodule Bgt.SessionControllerTest do
 
   test "login succeeds", %{conn: conn} do
     conn = post conn, session_path(conn, :create), session: @valid_attrs
-    assert redirected_to(conn) == page_path(conn, :index)
+    assert redirected_to(conn) == transaction_path(conn, :index)
   end
 
   test "login fails", %{conn: conn} do
