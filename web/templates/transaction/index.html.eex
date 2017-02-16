@@ -20,8 +20,8 @@
     <td><%= datetime |> Timex.format!("{h12}:{m} {AM}") %></td>
     <td>
       <%=
-        if @transaction.amount do
-          :erlang.float_to_binary(@transaction.amount, decimals: 2)
+        if transaction.amount do
+          :erlang.float_to_binary(transaction.amount, decimals: 2)
         end
       %>
     </td>
