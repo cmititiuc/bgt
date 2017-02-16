@@ -1,22 +1,28 @@
 <h2>Show transaction</h2>
 
 <ul>
-
   <li>
-    <strong>User:</strong>
-    <%= @transaction.user_id %>
+    <strong>DateTime:</strong>
+    <% timezone = Timex.Timezone.get("America/New_York", Timex.now) %>
+    <%=
+      Timex.Timezone.convert(@transaction.inserted_at, timezone)
+      |> Timex.format!("{WDshort}, {Mshort} {D}, {YYYY} - {h12}:{m} {AM}")
+    %>
   </li>
 
   <li>
     <strong>Amount:</strong>
-    <%= @transaction.amount %>
+    <%=
+      if @transaction.amount do
+        :erlang.float_to_binary(@transaction.amount, decimals: 2)
+      end
+    %>
   </li>
 
   <li>
     <strong>Description:</strong>
     <%= @transaction.description %>
   </li>
-
 </ul>
 
 <%= link "Edit", to: transaction_path(@conn, :edit, @transaction) %>
