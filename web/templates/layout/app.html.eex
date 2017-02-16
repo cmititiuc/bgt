@@ -16,8 +16,8 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="<%= page_path @conn, :index %>">Home</a></li>
             <%= if @current_user do %>
+              <li><a href="<%= page_path @conn, :index %>">Home</a></li>
               <li><%= @current_user.username %></li>
               <li>
                 <a href="<%= transaction_path(@conn, :index) %>">Transactions</a>
