@@ -14,7 +14,7 @@ defmodule Bgt.Transaction do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:amount, :description])
+    |> cast(params, [:amount, :description, :inserted_at])
     |> validate_required([:amount, :description])
   end
 end

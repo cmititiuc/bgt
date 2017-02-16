@@ -5,11 +5,13 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= label f, :inserted_at, class: "control-label" %>
-    <%= text_input f, :inserted_at, class: "form-control" %>
-    <%= error_tag f, :inserted_at %>
-  </div>
+  <%= if @changeset.data.id do %>
+    <div class="form-group">
+      <%= label f, :inserted_at, class: "control-label" %>
+      <%= text_input f, :inserted_at, class: "form-control" %>
+      <%= error_tag f, :inserted_at %>
+    </div>
+  <% end %>
 
   <div class="form-group">
     <%= label f, :amount, class: "control-label" %>
