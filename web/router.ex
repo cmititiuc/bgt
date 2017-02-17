@@ -13,7 +13,8 @@ defmodule Bgt.Router do
   scope "/", Bgt do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", TransactionController, :index
+    get "/pages", PageController, :index
 
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     resources "/transactions", TransactionController
