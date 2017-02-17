@@ -19,11 +19,7 @@
     <td><%= datetime |> Timex.format!("{WDshort}, {Mshort} {D}, {YYYY}") %></td>
     <td><%= datetime |> Timex.format!("{h12}:{m} {AM}") %></td>
     <td>
-      <%=
-        if transaction.amount do
-          :erlang.float_to_binary(transaction.amount, decimals: 2)
-        end
-      %>
+      <%= if transaction.amount, do: Decimal.round(transaction.amount, 2) %>
     </td>
     <td><%= transaction.description %></td>
 

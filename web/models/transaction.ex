@@ -2,7 +2,7 @@ defmodule Bgt.Transaction do
   use Bgt.Web, :model
 
   schema "transactions" do
-    field :amount, :float
+    field :amount, :decimal
     field :description, :string
     belongs_to :user, Bgt.User
 

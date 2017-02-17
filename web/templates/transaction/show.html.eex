@@ -12,11 +12,7 @@
 
   <li>
     <strong>Amount:</strong>
-    <%=
-      if @transaction.amount do
-        :erlang.float_to_binary(@transaction.amount, decimals: 2)
-      end
-    %>
+    <%= if @transaction.amount, do: Decimal.round(@transaction.amount, 2) %>
   </li>
 
   <li>
