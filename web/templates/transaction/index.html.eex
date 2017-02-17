@@ -12,12 +12,10 @@
     </tr>
   </thead>
   <tbody>
-<% timezone = Timex.Timezone.get("America/New_York", Timex.now) %>
 <%= for transaction <- @transactions do %>
-  <% datetime = Timex.Timezone.convert(transaction.inserted_at, timezone) %>
   <tr>
-    <td><%= datetime |> Timex.format!("{WDshort}, {Mshort} {D}, {YYYY}") %></td>
-    <td><%= datetime |> Timex.format!("{h12}:{m} {AM}") %></td>
+    <td><%= format_date(transaction.inserted_at) %></td>
+    <td><%= format_time(transaction.inserted_at) %></td>
     <td>
       <%= if transaction.amount, do: Decimal.round(transaction.amount, 2) %>
     </td>

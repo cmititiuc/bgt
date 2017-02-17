@@ -2,12 +2,13 @@
 
 <ul>
   <li>
-    <strong>DateTime:</strong>
-    <% timezone = Timex.Timezone.get("America/New_York", Timex.now) %>
-    <%=
-      Timex.Timezone.convert(@transaction.inserted_at, timezone)
-      |> Timex.format!("{WDshort}, {Mshort} {D}, {YYYY} - {h12}:{m} {AM}")
-    %>
+    <strong>Date</strong>
+    <%= format_date(@transaction.inserted_at) %>
+  </li>
+
+  <li>
+    <strong>Time</strong>
+    <%= format_time(@transaction.inserted_at) %>
   </li>
 
   <li>
