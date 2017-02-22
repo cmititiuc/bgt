@@ -1,4 +1,9 @@
-<h2>Listing transactions</h2>
+<p>
+  <%= render "form.html",
+    changeset: @changeset,
+    action: transaction_path(@conn, :create)
+  %>
+</p>
 
 <table class="table">
   <thead>

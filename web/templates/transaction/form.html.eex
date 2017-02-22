@@ -15,7 +15,7 @@
 
   <div class="form-group">
     <%= label f, :amount, class: "control-label" %>
-    <%= number_input f, :amount, step: "any", class: "form-control" %>
+    <%= number_input f, :amount, step: "any", class: "form-control", autofocus: true %>
     <%= error_tag f, :amount %>
   </div>
 

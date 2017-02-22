@@ -10,10 +10,11 @@ defmodule Bgt.TransactionController do
 
   def index(conn, _params) do
     %{assigns: %{current_user: %{id: id}}} = user_check(conn, %{})
+    changeset = Transaction.changeset(%Transaction{})
     transactions = Repo.all(
       from t in Transaction, where: t.user_id == ^id, order_by: [desc: :inserted_at]
     )
-    render(conn, "index.html", transactions: transactions)
+    render(conn, "index.html", transactions: transactions, changeset: changeset)
   end
 
   def new(conn, _params) do
@@ -31,7 +32,10 @@ defmodule Bgt.TransactionController do
         |> put_flash(:info, "Transaction created successfully.")
         |> redirect(to: transaction_path(conn, :index))
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        transactions = Repo.all(
+          from t in Transaction, where: t.user_id == ^id, order_by: [desc: :inserted_at]
+        )
+        render(conn, "index.html", transactions: transactions, changeset: changeset)
     end
   end
 
