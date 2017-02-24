@@ -79,7 +79,7 @@ form.link, form.button {
   }
 }
 
-/* Fixes Log Out link styles */
+/* Fixes Log Out link styles, and adds styles to non-link, username */
 
 .nav-pills > li > form > a, #username {
   border-radius: 4px;
@@ -95,6 +95,7 @@ form.link, form.button {
   text-decoration: none;
   background-color: #eee;
 }
+
 
 .form-group {
   margin: 0;
@@ -118,12 +119,16 @@ form.link, form.button {
   vertical-align: bottom;
 }
 
+.control-label {
+  margin-left: 8px;
+}
+
 @media (max-width: 500px) {
-  #form-container {
+  .form-group {
     display: block;
   }
 
-  .form-group {
+  #form-container {
     display: block;
   }
 

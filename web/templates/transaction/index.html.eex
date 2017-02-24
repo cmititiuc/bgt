@@ -1,9 +1,7 @@
-<p>
-  <%= render "form.html",
-    changeset: @changeset,
-    action: transaction_path(@conn, :create)
-  %>
-</p>
+<%= render "form.html",
+  changeset: @changeset,
+  action: transaction_path(@conn, :create)
+%>
 
 <table class="table">
   <thead>
