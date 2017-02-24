@@ -13,19 +13,19 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= label f, :amount, class: "control-label" %>
-    <%= number_input f, :amount, step: "any", class: "form-control", autofocus: true %>
-    <%= error_tag f, :amount %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :description, class: "control-label" %>
-    <%= text_input f, :description, class: "form-control" %>
-    <%= error_tag f, :description %>
-  </div>
-
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+  <div id="form-container">
+    <div id="amount-container" class="form-group">
+      <%= label f, :amount, class: "control-label" %>
+      <%= number_input f, :amount, step: "any", class: "form-control", autofocus: true %>
+      <%= error_tag f, :amount %>
+    </div>
+    <div id="description-container" class="form-group">
+      <%= label f, :description, class: "control-label" %>
+      <%= text_input f, :description, class: "form-control" %>
+      <%= error_tag f, :description %>
+    </div>
+    <div id="submit-container" class="form-group">
+      <%= submit "Submit", class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

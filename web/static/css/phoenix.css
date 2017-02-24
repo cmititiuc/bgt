@@ -95,3 +95,44 @@ form.link, form.button {
   text-decoration: none;
   background-color: #eee;
 }
+
+.form-group {
+  margin: 0;
+  display: table-cell;
+}
+
+#form-container {
+  display: table;
+}
+
+#amount-container {
+  min-width: 150px;
+}
+
+#description-container {
+  width: 100%;
+  padding: 0 10px;
+}
+
+#submit-container {
+  vertical-align: bottom;
+}
+
+@media (max-width: 500px) {
+  #form-container {
+    display: block;
+  }
+
+  .form-group {
+    display: block;
+  }
+
+  #description-container {
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  #submit-container {
+    text-align: right;
+  }
+}
