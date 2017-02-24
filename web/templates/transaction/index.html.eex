@@ -46,5 +46,3 @@
 <% end %>
   </tbody>
 </table>
-
-<%= link "New transaction", to: transaction_path(@conn, :new) %>

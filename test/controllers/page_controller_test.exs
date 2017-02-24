@@ -17,6 +17,6 @@ defmodule Bgt.PageControllerTest do
     conn = conn |> bypass_through(Bgt.Router, :browser) |> get("/")
     add_user("robin")
     conn = conn |> log_in |> get("/")
-    assert html_response(conn, 200) =~ "Transactions"
+    assert html_response(conn, 200) =~ "Log Out"
   end
 end

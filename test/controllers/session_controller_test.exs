@@ -26,6 +26,6 @@ defmodule Bgt.SessionControllerTest do
   test "logout succeeds", %{conn: conn, user: user} do
     conn = conn |> put_session(:user_id, user.id) |> send_resp(:ok, "/")
     conn = delete conn, session_path(conn, :delete, user)
-    assert redirected_to(conn) == page_path(conn, :index)
+    assert redirected_to(conn) == transaction_path(conn, :index)
   end
 end

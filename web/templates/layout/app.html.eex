@@ -17,11 +17,7 @@
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <%= if @current_user do %>
-              <li><a href="<%= page_path @conn, :index %>">Home</a></li>
-              <li><%= @current_user.username %></li>
-              <li>
-                <a href="<%= transaction_path(@conn, :index) %>">Transactions</a>
-              </li>
+              <li><span id="username"><%= @current_user.username %></span></li>
               <li>
                 <%= link "Log Out",
                   to: session_path(@conn, :delete, @current_user),

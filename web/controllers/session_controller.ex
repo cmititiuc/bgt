@@ -18,6 +18,6 @@ defmodule Bgt.SessionController do
 
   def delete(conn, _params) do
     configure_session(conn, drop: true)
-    |> auth_info("You have been logged out", page_path(conn, :index))
+    |> auth_info("You have been logged out", transaction_path(conn, :index))
   end
 end

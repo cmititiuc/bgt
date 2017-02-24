@@ -81,11 +81,11 @@ form.link, form.button {
 
 /* Fixes Log Out link styles */
 
-.nav-pills > li > form > a {
+.nav-pills > li > form > a, #username {
   border-radius: 4px;
 }
 
-.nav > li > form > a {
+.nav > li > form > a, #username {
   position: relative;
   display: block;
   padding: 10px 15px;

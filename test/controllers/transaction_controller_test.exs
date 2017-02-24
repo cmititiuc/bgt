@@ -37,7 +37,7 @@ defmodule Bgt.TransactionControllerTest do
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
     conn = post conn, transaction_path(conn, :create), transaction: @invalid_attrs
-    assert html_response(conn, 200) =~ "New transaction"
+    assert html_response(conn, 200) =~ "Log Out"
   end
 
   test "shows chosen resource", %{conn: conn, user: user} do
