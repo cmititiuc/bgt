@@ -23,5 +23,3 @@
     <%= submit "Log In", class: "btn btn-primary" %>
   </div>
 <% end %>
-
-<%= link "Back", to: page_path(@conn, :index) %>

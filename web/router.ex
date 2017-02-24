@@ -14,7 +14,6 @@ defmodule Bgt.Router do
     pipe_through :browser
 
     get "/", TransactionController, :index
-    get "/pages", PageController, :index
 
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     resources "/transactions", TransactionController

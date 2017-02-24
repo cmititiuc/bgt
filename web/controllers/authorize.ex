@@ -22,8 +22,9 @@ defmodule Bgt.Authorize do
   end
   def id_check(%Plug.Conn{params: %{"id" => id}, assigns: %{current_user:
      %{id: current_id}}} = conn, _opts) do
-    if id == to_string(current_id), do: conn,
-     else: auth_error conn, "You are not authorized to view this page", page_path(conn, :new)
+    if id == to_string(current_id),
+      do: conn,
+      else: auth_error conn, "You are not authorized to view this page", transaction_path(conn, :new)
   end
 
   def auth_info(conn, message, path) do
