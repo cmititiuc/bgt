@@ -19,7 +19,7 @@
         <td colspan="3" class="date"><%= format_date(date) %></td>
         <td colspan="2" class="total"><%= calculate_total(transactions) %></td>
       </tr>
-      <%= for transaction <- transactions |> Enum.reverse do %>
+      <%= for transaction <- transactions |> sort_transactions do %>
         <tr class="transaction">
           <td style="text-align: right;">
             <%= format_time(transaction.inserted_at) %>
