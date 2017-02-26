@@ -24,7 +24,7 @@ defmodule Bgt.TransactionController do
       end)
       |> Enum.to_list
       |> Enum.sort(fn({date_a, _}, {date_b, _}) ->
-        if Date.compare(date_a, date_b) == :gt, do: true, else: false
+        if Timex.compare(date_a, date_b) == :gt, do: true, else: false
       end)
     render(conn, "index.html", transactions: transactions, changeset: changeset)
   end
@@ -57,7 +57,7 @@ defmodule Bgt.TransactionController do
           end)
           |> Enum.to_list
           |> Enum.sort(fn({date_a, _}, {date_b, _}) ->
-            if Date.compare(date_a, date_b) == :gt, do: true, else: false
+            if Timex.compare(date_a, date_b) == :gt, do: true, else: false
           end)
         render(conn, "index.html", transactions: transactions, changeset: changeset)
     end
