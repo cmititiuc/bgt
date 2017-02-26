@@ -141,3 +141,15 @@ form.link, form.button {
     text-align: right;
   }
 }
+
+.transaction {
+  color: #5b5b5b;
+}
+
+.total {
+  color: #010026;
+}
+
+.date {
+  color: #628c11;
+}

@@ -14,7 +14,14 @@ defmodule Bgt.TransactionController do
     transactions = Repo.all(
       from t in Transaction, where: t.user_id == ^id, order_by: [desc: :inserted_at]
     )
-    render(conn, "index.html", transactions: transactions, changeset: changeset)
+    grouped_transactions = transactions |> Enum.group_by(fn (t) ->
+      t.inserted_at |> Ecto.DateTime.cast! |> Ecto.DateTime.to_date
+    end)
+    render(conn, "index.html",
+      transactions: transactions,
+      grouped_transactions: grouped_transactions,
+      changeset: changeset
+    )
   end
 
   def new(conn, _params) do
@@ -35,7 +42,14 @@ defmodule Bgt.TransactionController do
         transactions = Repo.all(
           from t in Transaction, where: t.user_id == ^id, order_by: [desc: :inserted_at]
         )
-        render(conn, "index.html", transactions: transactions, changeset: changeset)
+        grouped_transactions = transactions |> Enum.group_by(fn (t) ->
+          t.inserted_at |> Ecto.DateTime.cast! |> Ecto.DateTime.to_date
+        end)
+        render(conn, "index.html",
+          transactions: transactions,
+          grouped_transactions: grouped_transactions,
+          changeset: changeset
+        )
     end
   end
 
