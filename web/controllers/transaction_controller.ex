@@ -97,7 +97,7 @@ defmodule Bgt.TransactionController do
     end)
     |> Enum.to_list
     |> Enum.sort(fn({date_a, _}, {date_b, _}) ->
-      if Timex.compare(date_a, date_b) == :gt, do: true, else: false
+      if Timex.compare(date_a, date_b) == 1, do: true, else: false
     end)
   end
 end
