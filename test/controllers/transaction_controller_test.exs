@@ -21,7 +21,7 @@ defmodule Bgt.TransactionControllerTest do
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, transaction_path(conn, :index)
-    assert html_response(conn, 200) =~ "<th>Date/Time</th>\n      <th colspan=\"2\">Description</th>\n      <th>Amount</th>"
+    assert html_response(conn, 200) =~ "Date/Time"
   end
 
   test "renders form for new resources", %{conn: conn} do

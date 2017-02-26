@@ -11,21 +11,7 @@ defmodule Bgt.TransactionController do
   def index(conn, _params) do
     %{assigns: %{current_user: %{id: id}}} = user_check(conn, %{})
     changeset = Transaction.changeset(%Transaction{})
-    transactions =
-      Repo.all(
-        from t in Transaction,
-        where: t.user_id == ^id,
-        order_by: [desc: :inserted_at]
-      )
-      |> Enum.group_by(fn (t) ->
-        t.inserted_at
-        |> Timex.Timezone.convert(Timex.Timezone.get("America/New_York", Timex.now))
-        |> Timex.to_date
-      end)
-      |> Enum.to_list
-      |> Enum.sort(fn({date_a, _}, {date_b, _}) ->
-        if Timex.compare(date_a, date_b) == :gt, do: true, else: false
-      end)
+    transactions = get_transactions(id)
     render(conn, "index.html", transactions: transactions, changeset: changeset)
   end
 
@@ -44,21 +30,7 @@ defmodule Bgt.TransactionController do
         |> put_flash(:info, "Transaction created successfully.")
         |> redirect(to: transaction_path(conn, :index))
       {:error, changeset} ->
-        transactions =
-          Repo.all(
-            from t in Transaction,
-            where: t.user_id == ^id,
-            order_by: [desc: :inserted_at]
-          )
-          |> Enum.group_by(fn (t) ->
-            t.inserted_at
-            |> Timex.Timezone.convert(Timex.Timezone.get("America/New_York", Timex.now))
-            |> Timex.to_date
-          end)
-          |> Enum.to_list
-          |> Enum.sort(fn({date_a, _}, {date_b, _}) ->
-            if Timex.compare(date_a, date_b) == :gt, do: true, else: false
-          end)
+        transactions = get_transactions(id)
         render(conn, "index.html", transactions: transactions, changeset: changeset)
     end
   end
@@ -110,5 +82,22 @@ defmodule Bgt.TransactionController do
     conn
     |> put_flash(:info, "Transaction deleted successfully.")
     |> redirect(to: transaction_path(conn, :index))
+  end
+
+  defp get_transactions(id) do
+    Repo.all(
+      from t in Transaction,
+      where: t.user_id == ^id,
+      order_by: [desc: :inserted_at]
+    )
+    |> Enum.group_by(fn (t) ->
+      t.inserted_at
+      |> Timex.Timezone.convert(Timex.Timezone.get("America/New_York", Timex.now))
+      |> Timex.to_date
+    end)
+    |> Enum.to_list
+    |> Enum.sort(fn({date_a, _}, {date_b, _}) ->
+      if Timex.compare(date_a, date_b) == :gt, do: true, else: false
+    end)
   end
 end
