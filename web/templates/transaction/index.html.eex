@@ -14,26 +14,16 @@
     </tr>
   </thead>
   <tbody>
-    <%= for {date, transactions} <- Enum.reverse(@grouped_transactions) do %>
+    <%= for {date, transactions} <- @transactions do %>
       <tr>
-        <td colspan="3" class="date">
-          <%=
-            Ecto.Date.to_erl(date)
-            |> Timex.format!("{WDshort}, {Mshort} {D}, {YYYY}")
-          %>
-        </td>
-        <td colspan="2" class="total">
-          <%=
-            Enum.reduce(transactions, Decimal.new(0), fn(t, acc) ->
-              Decimal.add(acc, t.amount)
-            end)
-            |> Decimal.round(2)
-          %>
-        </td>
+        <td colspan="3" class="date"><%= format_date(date) %></td>
+        <td colspan="2" class="total"><%= calculate_total(transactions) %></td>
       </tr>
       <%= for transaction <- transactions |> Enum.reverse do %>
         <tr class="transaction">
-          <td style="text-align: right;"><%= format_time(transaction.inserted_at) %></td>
+          <td style="text-align: right;">
+            <%= format_time(transaction.inserted_at) %>
+          </td>
           <td colspan="2"><%= transaction.description %></td>
           <td>
             <%= if transaction.amount, do: Decimal.round(transaction.amount, 2) %>
