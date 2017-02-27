@@ -32,7 +32,7 @@ defmodule Bgt.TransactionView do
   def sort_transactions(transactions) do
     transactions
     |> Enum.sort(fn(t_a, t_b) ->
-      if compare(t_a.inserted_at, t_b.inserted_at) == -1, do: true, else: false
+      compare(t_a.inserted_at, t_b.inserted_at) == -1
     end)
   end
 end
