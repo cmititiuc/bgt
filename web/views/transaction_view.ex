@@ -18,10 +18,14 @@ defmodule Bgt.TransactionView do
     Timex.format!(date, "{WDshort}, {Mshort} {D}, {YYYY}")
   end
 
-  def format_time(datetime) do
+  def format_tz_time(datetime) do
     datetime |> time_zone_convert |> Timex.format!("{h12}:{m} {AM}")
   end
 
+  def format_time({h, m, _, _}) do
+    {hour, am_or_pm} = Timex.Time.to_12hour_clock h
+    "#{hour}:#{m} #{String.upcase "#{am_or_pm}"}"
+  end
 
   def calculate_total(transactions) do
     transactions
@@ -34,18 +38,17 @@ defmodule Bgt.TransactionView do
     |> Enum.sort(&(compare(&1.inserted_at, &2.inserted_at)) == -1)
   end
 
-  def list_transactions(transactions, conn, html \\ [], date \\ nil)
-  def list_transactions([], _, html, _), do: Phoenix.HTML.raw html
-  def list_transactions([h | t], conn, html, date) do
-    tags =
+  def list_transactions(transactions, conn, markup \\ [], date \\ nil)
+  def list_transactions([], _, markup, _), do: Phoenix.HTML.raw markup
+  def list_transactions([h | t], conn, markup, date) do
+    new_markup =
       if date != h.date do
-        {:safe, date_markup} = render "_date_row.html", date: h.date
-        {:safe, markup} = render "_row.html", conn: conn, transaction: h
-        [date_markup|markup]
+        {:safe, row_markup} = render "_date_row.html", conn: conn, transaction: h
+        row_markup
       else
-        {:safe, markup} = render "_row.html", conn: conn, transaction: h
-        markup
+        {:safe, row_markup} = render "_row.html", conn: conn, transaction: h
+        row_markup
       end
-    list_transactions(t, conn, [html|tags], h.date)
+    list_transactions(t, conn, [markup|new_markup], h.date)
   end
 end

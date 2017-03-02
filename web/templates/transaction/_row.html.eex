@@ -1,6 +1,6 @@
 <tr class="transaction">
   <td style="text-align: right;">
-    <%= format_time(@transaction.inserted_at) %>
+    <%= format_time(@transaction.time) %>
   </td>
   <td colspan="2"><%= @transaction.description %></td>
   <td>
@@ -8,15 +8,15 @@
   </td>
   <td class="text-right">
     <%= link "Show",
-      to: "#",#transaction_path(@conn, :show, @transaction),
+      to: transaction_path(@conn, :show, struct(Bgt.Transaction, @transaction)),
       class: "btn btn-default btn-xs"
     %>
     <%= link "Edit",
-      to: "#",#transaction_path(@conn, :edit, @transaction),
+      to: transaction_path(@conn, :edit, struct(Bgt.Transaction, @transaction)),
       class: "btn btn-default btn-xs"
     %>
     <%= link "Delete",
-      to: "#",#transaction_path(@conn, :delete, @transaction),
+      to: transaction_path(@conn, :delete, struct(Bgt.Transaction, @transaction)),
       method: :delete,
       data: [confirm: "Are you sure?"],
       class: "btn btn-danger btn-xs"
