@@ -23,8 +23,7 @@ defmodule Bgt.TransactionView do
   end
 
   def format_time({h, m, _, _}) do
-    {hour, am_or_pm} = Timex.Time.to_12hour_clock h
-    "#{hour}:#{m} #{String.upcase "#{am_or_pm}"}"
+    {{1900, 1, 1}, {h, m, 0}} |> Timex.format!("{h12}:{m} {AM}")
   end
 
   def calculate_total(transactions) do

@@ -1,5 +1,5 @@
 <tr>
   <td colspan="3" class="date"><%= format_date(@transaction.date) %></td>
-  <td colspan="2" class="total">0.00<%#= calculate_total(transactions) %></td>
+  <td colspan="2" class="total"><%= "total" %></td>
 </tr>
 <%= render "_row.html", conn: @conn, transaction: @transaction %>

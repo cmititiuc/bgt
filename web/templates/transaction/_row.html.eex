@@ -1,7 +1,5 @@
 <tr class="transaction">
-  <td style="text-align: right;">
-    <%= format_time(@transaction.time) %>
-  </td>
+  <td style="text-align: right;"><%= format_time(@transaction.time) %></td>
   <td colspan="2"><%= @transaction.description %></td>
   <td>
     <%= if @transaction.amount, do: Decimal.round(@transaction.amount, 2) %>
