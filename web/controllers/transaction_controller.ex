@@ -12,7 +12,24 @@ defmodule Bgt.TransactionController do
     %{assigns: %{current_user: %{id: id}}} = user_check(conn, %{})
     changeset = Transaction.changeset(%Transaction{})
     transactions = get_transactions(id)
-    render(conn, "index.html", transactions: transactions, changeset: changeset)
+
+    sorted_transactions =
+      Repo.all(
+        from t in Transaction,
+        where: t.user_id == ^id,
+        select: %{
+          amount: t.amount,
+          description: t.description,
+          id: t.id,
+          user_id: t.user_id,
+          inserted_at: t.inserted_at,
+          date: fragment("\"date\"(inserted_at at time zone 'UTC' at time zone 'America/New_York')"),
+          time: fragment("\"time\"(inserted_at at time zone 'UTC' at time zone 'America/New_York')")
+        },
+        order_by: [fragment("\"date\" desc"), fragment("\"time\"")]
+      )
+
+    render(conn, "index.html", transactions: transactions, sorted_transactions: sorted_transactions, changeset: changeset)
   end
 
   def new(conn, _params) do

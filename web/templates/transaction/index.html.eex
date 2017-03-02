@@ -14,7 +14,8 @@
     </tr>
   </thead>
   <tbody>
-    <%= for {date, transactions} <- @transactions do %>
+    <%= list_transactions @sorted_transactions, @conn %>
+    <% for {date, transactions} <- @transactions do %>
       <tr>
         <td colspan="3" class="date"><%= format_date(date) %></td>
         <td colspan="2" class="total"><%= calculate_total(transactions) %></td>

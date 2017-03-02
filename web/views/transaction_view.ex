@@ -31,8 +31,21 @@ defmodule Bgt.TransactionView do
 
   def sort_transactions(transactions) do
     transactions
-    |> Enum.sort(fn(t_a, t_b) ->
-      compare(t_a.inserted_at, t_b.inserted_at) == -1
-    end)
+    |> Enum.sort(&(compare(&1.inserted_at, &2.inserted_at)) == -1)
+  end
+
+  def list_transactions(transactions, conn, html \\ [], date \\ nil)
+  def list_transactions([], _, html, _), do: Phoenix.HTML.raw html
+  def list_transactions([h | t], conn, html, date) do
+    tags =
+      if date != h.date do
+        {:safe, date_markup} = render "_date_row.html", date: h.date
+        {:safe, markup} = render "_row.html", conn: conn, transaction: h
+        [date_markup|markup]
+      else
+        {:safe, markup} = render "_row.html", conn: conn, transaction: h
+        markup
+      end
+    list_transactions(t, conn, [html|tags], h.date)
   end
 end
