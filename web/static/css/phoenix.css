@@ -153,3 +153,8 @@ form.link, form.button {
 .date {
   color: #628c11;
 }
+
+/* have to be super specific here to override whatever style is causing this */
+tbody > tr > td.date {
+  border-top: 0;
+}
