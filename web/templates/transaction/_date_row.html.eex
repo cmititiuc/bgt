@@ -1,0 +1,5 @@
+<%= unless is_nil(@total), do: render "_total_row.html", total: @total %>
+<tr>
+  <td colspan="5" class="date"><%= format_date(@transaction.date) %></td>
+</tr>
+<%= render "_row.html", conn: @conn, transaction: @transaction %>

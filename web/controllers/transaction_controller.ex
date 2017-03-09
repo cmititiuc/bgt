@@ -88,16 +88,16 @@ defmodule Bgt.TransactionController do
     Repo.all(
       from t in Transaction,
       where: t.user_id == ^id,
-      order_by: [desc: :inserted_at]
+      select: %{
+        amount: t.amount,
+        description: t.description,
+        id: t.id,
+        user_id: t.user_id,
+        inserted_at: t.inserted_at,
+        date: fragment("\"date\"(inserted_at at time zone 'UTC' at time zone 'America/New_York')"),
+        time: fragment("\"time\"(inserted_at at time zone 'UTC' at time zone 'America/New_York')")
+      },
+      order_by: [fragment("\"date\" desc"), fragment("\"time\"")]
     )
-    |> Enum.group_by(fn (t) ->
-      t.inserted_at
-      |> Timex.Timezone.convert(Timex.Timezone.get("America/New_York", Timex.now))
-      |> Timex.to_date
-    end)
-    |> Enum.to_list
-    |> Enum.sort(fn({date_a, _}, {date_b, _}) ->
-      Timex.compare(date_a, date_b) == 1
-    end)
   end
 end

@@ -1,0 +1,4 @@
+<tr>
+  <td colspan="3"></td>
+  <td colspan="2"><%= Decimal.round(@total, 2) %></td>
+</tr>
